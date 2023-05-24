@@ -1,0 +1,64 @@
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+df = pd.read_csv("IRIS.csv")
+data.describe()
+
+data.isnull().sum()
+
+print("\n\nThe features in the dataset are as follows : ")
+print("1. Sepal length : ", data['SepalLengthCm'].dtype)
+print("2. Sepal width : ", data['SepalWidthCm'].dtype)
+print("3. Petal length : ", data['PetalLengthCm'].dtype)
+print("4. Petal width : ", data['PetalWidthCm'].dtype)
+print("5. Species : ", data['Species'].dtype)
+
+sns.histplot(x = data['SepalLengthCm'], kde=True)
+sns.histplot(x = data['SepalWidthCm'], kde=True)
+sns.histplot(x = data['PetalLengthCm'],kde=True)
+sns.histplot(x = data['PetalWidthCm'], kde=True)
+sns.histplot(x = data['Species'], kde=True)
+
+sns.boxplot(data['SepalLengthCm'])
+sns.boxplot(data['SepalWidthCm'])
+sns.boxplot(data['PetalLengthCm'])
+sns.boxplot(data['PetalWidthCm'])
+sns.boxplot(x='SepalLengthCm',y='Species',data=data)
+sns.boxplot(x='PetalLengthCm',y='Species',data=data)
+
+
+
+
+
+#extraaaa
+
+plt.figure(figsize = (10, 7))
+x = df["sepal_length"]
+plt.hist(x, bins = 20, color = "green")
+plt.title("Sepal Length in cm")
+plt.xlabel("Sepal_Length_cm")
+plt.ylabel("Count")
+plt.show()
+
+plt.figure(figsize = (10, 7))
+x = df.sepal_width
+plt.hist(x, bins = 20, color = "green")
+plt.title("Sepal Width in cm")
+plt.xlabel("Sepal_Width_cm")
+plt.ylabel("Count")
+plt.show()
+
+plt.figure(figsize = (10, 7))
+x =df.petal_length
+plt.hist(x, bins = 20, color = "green")
+plt.title("Petal Length in cm")
+plt.xlabel("Petal_Length_cm")
+plt.ylabel("Count")
+
+plt.show()
+
+plt.figure(figsize = (10, 7))
+df.boxplot()
+plt.show()

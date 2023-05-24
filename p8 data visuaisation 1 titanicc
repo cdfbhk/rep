@@ -10,25 +10,35 @@ dataset = sns.load_dataset('titanic')
 
 dataset.head()
 
-sns.distplot(dataset['fare'])
+dataset.describe()
 
+sns.distplot(dataset['fare'])
+sns.histplot(dataset['fare'], kde=True, linewidth=0);
+sns.jointplot(x='age', y='fare', data=dataset);
+sns.boxplot(x='sex', y='age', data=dataset, hue="survived");
 sns.distplot(dataset['fare'], kde=False, bins=10)
 
+plt.hist(dataset['age'], bins=5)
+plt.show()
 sns.jointplot(x='age', y='fare', data=dataset)
 
 sns.jointplot(x='age', y='fare', data=dataset, kind='hex')
-
 dataset = dataset.dropna()
 
+
+
+
+
+
+
+
+#all these are extra
 sns.pairplot(dataset)
-
 sns.pairplot(dataset, hue='sex')
-
 sns.rugplot(dataset['fare'])
-
 sns.barplot(x='sex', y='age', data=dataset)
 
-
+#optional part
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns

@@ -9,6 +9,16 @@ iris.head(5)
 
 iris.dtypes
 
+from sklearn.preprocessing import OneHotEncoder
+import pandas as pd
+columns_to_encode = ['Species']
+encoder = OneHotEncoder()
+encoded_data = encoder.fit_transform(iris[columns_to_encode])
+encoded_df = pd.DataFrame(encoded_data.toarray())
+encoded_iris = pd.concat([iris.drop(columns=columns_to_encode), encoded_df], axis=1)
+encoded_iris
+
+
 from sklearn import preprocessing
 enc = preprocessing.OneHotEncoder()
 enc_iris = pd.DataFrame(enc.fit_transform(iris[['SepalLengthCm']]).toarray())
@@ -57,14 +67,31 @@ Y = np.array([1, 1, 1, 2, 2, 2])
 from sklearn.naive_bayes import GaussianNB
 
 gaussian = GaussianNB()
-gaussian.fit(X, Y)
+gaussian.fit(X, Y) # x,y
 
+import numpy as np
+import pandas as pd
+X = np.array([[-1, -1], [-2, -1], [-3, -2], [1, 1], [2, 1], [3, 2]])
+Y = np.array([1, 1, 1, 2, 2, 2])
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.33, random_state=42)
 Y_pred = gaussian.predict(X_test)
+Y_pred
+
+
 
 from sklearn.metrics import confusion_matrix, accuracy_score, precision_score, recall_score
-
+y_true = [2, 0, 2, 2, 0, 1]
+y_pred = [0, 0, 2, 2, 0, 2]
 confusion_matrix(y_true, y_pred)
 
+import numpy as np
+import pandas as pd
+X = np.array([[-1, -1], [-2, -1], [-3, -2], [1, 1], [2, 1], [3, 2]])
+Y = np.array([1, 1, 1, 2, 2, 2])
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.33, random_state=42)
+Y_pred = gaussian.predict(X_test)
 ac = accuracy_score(y_test,Y_pred)
 print(ac)
 

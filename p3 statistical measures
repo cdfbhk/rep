@@ -14,6 +14,7 @@ df.mean(axis=1)[0:4]
 df.median()
 
 df.loc[:,'age'].median()
+df.loc[:,'age'].mode()
 df.mode()
 df.min()
 df.max()
@@ -21,6 +22,9 @@ df.max()
 df.loc[:,'age'].min(skipna = False)
 
 df.std()
+df.groupby(['groups'])['age'].mean()
+(df.groupby(['salary']).Eating.mean())
+df=df.rename(columns= {'healthy_eating':'Eating'},inplace=False)
 
 from sklearn import preprocessing 
 enc = preprocessing.OneHotEncoder()
@@ -30,12 +34,21 @@ enc_df
 df_encode =df.join(enc_df) 
 df_encode
 
+
+part b 
 import pandas as pd
-csv_url = 'https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data'
-col_names = ['Sepal_Length','Sepal_Width','Petal_Length','Petal_Width','Species']
-iris = pd.read_csv(csv_url, names = col_names)
+import numpy as np
+
+iris = pd.read_csv('iris.csv')
+
 irisSet = (iris['Species']== 'Iris-setosa')
-print('Iris-setosa')
+
+#import pandas as pd
+#csv_url = 'https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data'
+#col_names = ['Sepal_Length','Sepal_Width','Petal_Length','Petal_Width','Species']
+#iris = pd.read_csv(csv_url, names = col_names)
+#irisSet = (iris['Species']== 'Iris-setosa')
+#print('Iris-setosa')
 
 print(iris[irisSet].describe())
 
@@ -44,12 +57,30 @@ irisVir = (iris['Species']== 'Iris-virginica')
 print('Iris-virginica')
 print(iris[irisVir].describe())
 
+irisVer = (iris['Species']== 'Iris-versicolor')
+
+print('Iris-versicolor')
+print(iris[irisVer].describe())
+
+
 irisVir = (iris['Species']== 'Iris-virginica')
 
 print('Iris-virginica')
 print(iris[irisVir].describe())
 
 
+
+
+
+
+
+
+
+
+
+
+
+ignore this extra part not included
 customerfile different file
 
 import numpy as np
@@ -68,15 +99,4 @@ from sklearn import preprocessing
 enc = preprocessing.OneHotEncoder()
 enc_df = pd.DataFrame(enc.fit_transform(df[['Genre']]).toarray())
 enc_df
-
-
-csv_url = 'https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data'
-col_names = ['Sepal_Length','Sepal_Width','Petal_Length','Petal_Width','Species']
-iris = pd.read_csv(csv_url, names = col_names)
-irisSet = (iris['Species']== 'Iris-setosa')
-print('Iris-setosa') 
-
-irisVir = (iris['Species']== 'Iris-virginica')
-print('Iris-virginica')
-
 

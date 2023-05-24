@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 weather=pd.read_csv("weatherAUS.csv")
+weather
 weather.head()
 #weather.info()
 weather.desc()
@@ -13,9 +14,28 @@ weather.tail(n=5)
 weather.shape
 weather.index
 weather.dtypes
+weather.columns.values
 weather[0:3]
 weather.sort_index(axis=1, ascending=False)
 weather.loc[:,["Data","Location"]]
+weather.sort_values(by="Rainfall")
+dataset.loc[:,["Location","Sunshine"]]
 weather.iloc[:,:3]
 weather.iloc[:5,:6]
 weather.iloc[:2,:]
+weather.iloc[5]
+weather.isnull()
+dataset.isnull().any()
+dataset.isnull().sum()
+dataset.Rainfall.isnull().sum()
+dataset.groupby(['Evaporation'])['Sunshine'].apply(lambda x:x.isnull().sum())
+
+dataset['MinTemp'] =dataset['MinTemp'].astype("object")
+dataset.dtypes
+
+
+
+
+
+
+

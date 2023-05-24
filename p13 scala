@@ -1,3 +1,10 @@
+2.Install scala pakage  
+ By using command:   sudo apt install scala
+ 
+  scala -version
+ spark-shell
+
+code
 // Scala program to find given number is POSITIVE/NEGATIVE
 // using "IF" statement
 object Sample{
@@ -11,3 +18,11 @@ else
 println("Number is NEGATIVE")
 }
 }
+
+
+
+By using command:   :load program.scala
+
+6.Then run using command: 
+
+  Sample.main(Array)()

@@ -55,7 +55,7 @@ words=word_tokenize(data)
 for word in words:
     print(nltk.pos_tag([word]))
     
-    
+#optional    
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 import math
@@ -103,5 +103,4 @@ def computeTFIDF(tfBagOfWords, idfs):
 tfidfA = computeTFIDF(tfA, idfs)
 tfidfB = computeTFIDF(tfB, idfs)
 df = pd.DataFrame([tfidfA, tfidfB])
-
 df

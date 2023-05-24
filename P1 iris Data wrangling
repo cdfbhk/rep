@@ -1,0 +1,45 @@
+iriss  code 
+LAB1:
+import numpy as np
+import pandas as pd
+from sklearn import preprocessing
+
+iris = pd.read_csv('Iris.csv')
+
+iris.head()
+
+min_max_scaler = preprocessing.MinMaxScaler()
+
+x = iris.iloc[:,:2]
+
+x_scaled = min_max_scaler.fit_transform(x)
+iris_normalized = pd.DataFrame(x_scaled)
+iris_normalized
+iris['Species'].unique()
+
+array(['Iris-setosa', 'Iris-versicolor', 'Iris-virginica'], dtype=object)
+
+label_encoder = preprocessing.LabelEncoder()
+iris['Species'] = label_encoder.fit_transform(iris['Species'])
+iris['Species'].unique()
+array([0, 1, 2])
+
+features_iris = iris.drop(["Species"],axis = 1)
+
+features_iris
+
+enc = preprocessing.OneHotEncoder()
+enc_iris=pd.DataFrame(enc.fit_transform(iris[['Species']]).toarray())
+iris_encode = features_iris.join(enc_iris)
+
+iris_encode
+
+iris_encode.rename(columns = {0 : 'Iris-Setosa',
+1:'Iris-Versicolor',2:'Iris-virginica'}, inplace = True)
+
+iris_encode
+
+one_hot_iris = pd.get_dummies(iris, prefix="Species",
+columns=['Species'], drop_first=True)
+
+one_hot_iris
